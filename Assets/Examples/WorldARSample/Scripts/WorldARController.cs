@@ -7,6 +7,8 @@
     using System;
     using HuaweiARInternal;
     using Common;
+    using UnityEngine.UI;
+    using UnityEngine.EventSystems;
 
     public class WorldARController : MonoBehaviour
     {
@@ -24,25 +26,53 @@
 
         private List<ARAnchor> addedAnchors = new List<ARAnchor>();
         private List<ARPlane> newPlanes = new List<ARPlane>();
-        private bool isPlace = false;
- 
+        public bool isOpen = false;
+        public GameObject scrollMenu;
+        public GameObject openImage;
+
+        public void OnRefresh()
+        {
+            Debug.Log(addedAnchors.Count);
+            for(int i = 0; i < addedAnchors.Count; i++)
+            {
+                ARAnchor anchor = addedAnchors[i];
+                anchor.Detach();
+            }
+            addedAnchors.Clear();
+        }
+
+        public void OnOpenClick()
+        {
+            isOpen = !isOpen;
+            scrollMenu.SetActive(isOpen);
+
+            Sprite downImage = Resources.Load("image/down", typeof(Sprite)) as Sprite;
+            Sprite upImage = Resources.Load("image/up", typeof(Sprite)) as Sprite;
+            if (isOpen)
+            {
+                openImage.GetComponent<Image>().sprite = downImage;
+            }
+            else
+            {
+                openImage.GetComponent<Image>().sprite = upImage;
+            }
+        }
+
         public void Update()
         {
             _DrawPlane();
             Touch touch;
             if (ARFrame.GetTrackingState() != ARTrackable.TrackingState.TRACKING
-                || Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+                || Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began || IsPointerOverUIObject())
             {
                 
             }
             else
             {
-                if (!isPlace)
+                if (addedAnchors.Count < 1)
                 {
-                    isPlace = true;
                     _DrawARLogo(touch);
                 }
-
             }
         }
 
@@ -63,7 +93,6 @@
 
         private void _DrawARLogo(Touch touch)
         {
-
             List<ARHitResult> hitResults = ARFrame.HitTest(touch);
             ARHitResult hitResult = null;
             ARTrackable trackable = null;
@@ -91,7 +120,7 @@
                 return;
             }
 
-            if (addedAnchors.Count > 1)
+            if (addedAnchors.Count > 2)
             {
                 ARAnchor toRemove = addedAnchors[0];
                 toRemove.Detach();
@@ -100,6 +129,7 @@
 
             GameObject prefab;
             trackable = hitResult.GetTrackable();
+
             if (trackable is ARPlane)
             {
                 prefab = arDiscoveryLogoPlanePrefabs;
@@ -113,6 +143,29 @@
             var logoObject = Instantiate(prefab, anchor.GetPose().position, anchor.GetPose().rotation);
             logoObject.GetComponent<ARDiscoveryLogoVisualizer>().Initialize(anchor);
             addedAnchors.Add(anchor);
+        }
+
+      private static bool IsPointerOverUIObject()
+      {
+         if (EventSystem.current == null)
+              return false;
+         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+ 
+         List<RaycastResult> results = new List<RaycastResult>();
+         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+ 
+         return results.Count > 0;
+      }
+
+        public void SetZYDS()
+        {
+            arDiscoveryLogoPlanePrefabs = (GameObject)Resources.Load("prefabs/zyds");
+        }
+
+        public void SetGJY()
+        {
+            arDiscoveryLogoPlanePrefabs = (GameObject)Resources.Load("prefabs/gjy");
         }
     }
 }
