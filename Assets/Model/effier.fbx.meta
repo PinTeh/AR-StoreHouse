@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: 01b9f97692b671d4ea6b3c5a9ec49442
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2100000: BuildingMat-00001
+    2100002: BuildingMat-00004
+    2100004: BuildingMat-00007
+    2100006: BuildingMat-00010
+    2100008: BuildingMat-00009
+    2100010: BuildingMat-00017
+    2100012: BuildingMat-00011
+    2100014: BuildingMat-00013
+    2100016: BuildingMat-00016
+    2100018: BuildingMat-00018
+    2100020: BuildingMat-00023
+    2100022: BuildingMat-00024
+    2100024: BuildingMat-00019
+    2100026: BuildingMat-00020
+    2100028: BuildingMat-00032
+    2100030: BuildingMat-00026
+    2100032: BuildingMat-00025
+    2100034: BuildingMat-00028
+    2100036: BuildingMat-00030
+    2100038: BuildingMat-00029
+    2100040: BuildingMat-00031
+    2100042: BuildingMat-00033
+    2100044: BuildingMat-00036
+    2100046: BuildingMat-00035
+    2100048: BuildingMat-00034
+    2100050: BuildingMat-00037
+    2100052: BuildingMat-00038
+    2100054: BuildingMat-00039
+    2100056: BuildingMat-00041
+    2100058: BuildingMat-00042
+    2100060: BuildingMat-00043
+    2100062: BuildingMat-00044
+    2100064: BuildingMat-00047
+    2100066: BuildingMat-00045
+    2100068: BuildingMat-00046
+    2100070: BuildingMat-00050
+    2100072: BuildingMat-00052
+    2100074: BuildingMat-00056
+    2100076: BuildingMat-00053
+    2100078: BuildingMat-00054
+    2100080: BuildingMat-00055
+    2100082: BuildingMat-00060
+    2100084: BuildingMat-00057
+    2100086: BuildingMat-00066
+    2100088: BuildingMat-00061
+    2100090: BuildingMat-00063
+    2100092: BuildingMat-00064
+    2100094: BuildingMat-00065
+    2100096: BuildingMat-00067
+    2100098: BuildingMat-00068
+    2100100: BuildingMat-00071
+    2100102: BuildingMat-00077
+    2100104: BuildingMat-00078
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: BuildingMesh-00001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

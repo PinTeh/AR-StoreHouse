@@ -30,6 +30,9 @@
         public GameObject scrollMenu;
         public GameObject openImage;
 
+        public GameObject zyds;
+        public string currentSelect = "default";
+
         public void OnRefresh()
         {
             Debug.Log(addedAnchors.Count);
@@ -60,7 +63,11 @@
 
         public void Update()
         {
-            _DrawPlane();
+            //修改
+            if (addedAnchors.Count < 1) 
+            {
+                _DrawPlane();
+            }
             Touch touch;
             if (ARFrame.GetTrackingState() != ARTrackable.TrackingState.TRACKING
                 || Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began || IsPointerOverUIObject())
@@ -82,6 +89,12 @@
             ARFrame.GetTrackables<ARPlane>(newPlanes,ARTrackableQueryFilter.NEW);
             for (int i = 0; i < newPlanes.Count; i++)
             {
+                // 地面才渲染 0    2为墙面
+                Debug.Log("平面类型" + (int)newPlanes[i].GetARPlaneType());
+                if ((int)newPlanes[i].GetARPlaneType() != 0)
+                {
+                    return;
+                }
                 GameObject planeObject = Instantiate(planePrefabs, Vector3.zero, Quaternion.identity, transform);
                 planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(newPlanes[i]);
 
@@ -98,11 +111,13 @@
             ARTrackable trackable = null;
             Boolean hasHitFlag = false;
             ARDebug.LogInfo("_DrawARLogo hitResults count {0}", hitResults.Count);
+            Debug.Log("_DrawARLogo hitResults count " +  hitResults.Count);
             foreach (ARHitResult singleHit in hitResults)
             {
                 trackable = singleHit.GetTrackable();
                 ARDebug.LogInfo("_DrawARLogo GetTrackable {0}", singleHit.GetTrackable());
-                if((trackable is ARPlane && ((ARPlane)trackable).IsPoseInPolygon(singleHit.HitPose)) ||
+                Debug.Log("_DrawARLogo GetTrackable " + singleHit.GetTrackable());
+                if ((trackable is ARPlane && ((ARPlane)trackable).IsPoseInPolygon(singleHit.HitPose)) ||
                     (trackable is ARPoint))
                 {
                     hitResult = singleHit;
@@ -117,35 +132,47 @@
             if (hasHitFlag != true)
             {
                 ARDebug.LogInfo("_DrawARLogo can't hit!");
+                Debug.Log("_DrawARLogo can't hit!");
                 return;
             }
 
-            if (addedAnchors.Count > 2)
-            {
-                ARAnchor toRemove = addedAnchors[0];
-                toRemove.Detach();
-                addedAnchors.RemoveAt(0);
-            }
+            //if (addedAnchors.Count > 2)
+            //{
+            //    ARAnchor toRemove = addedAnchors[0];
+            //    toRemove.Detach();
+            //    addedAnchors.RemoveAt(0);
+            //}
 
             GameObject prefab;
             trackable = hitResult.GetTrackable();
 
             if (trackable is ARPlane)
             {
-                prefab = arDiscoveryLogoPlanePrefabs;
+                Debug.Log("当前模型:" + currentSelect);
+                switch (currentSelect)
+                {
+                    case "zyds": prefab = (GameObject)Resources.Load("prefabs/zyds");break;
+                    case "eiffel": prefab = (GameObject)Resources.Load("prefabs/eiffel"); break;
+                    default: prefab = arDiscoveryLogoPlanePrefabs; break;
+                }
             }
             else
             {
-                prefab = arDiscoveryLogoPointPrefabs;
+                return;
+                //prefab = arDiscoveryLogoPointPrefabs;
             }
 
             ARAnchor anchor = hitResult.CreateAnchor();
+            Debug.Log("创建锚点");
             var logoObject = Instantiate(prefab, anchor.GetPose().position, anchor.GetPose().rotation);
+            Debug.Log("初始化模型");
             logoObject.GetComponent<ARDiscoveryLogoVisualizer>().Initialize(anchor);
+            Debug.Log("初始化模型2");
             addedAnchors.Add(anchor);
+            Debug.Log("新增锚点,数量 " + addedAnchors.Count);
         }
 
-      private static bool IsPointerOverUIObject()
+        private static bool IsPointerOverUIObject()
       {
          if (EventSystem.current == null)
               return false;
@@ -160,12 +187,14 @@
 
         public void SetZYDS()
         {
-            arDiscoveryLogoPlanePrefabs = (GameObject)Resources.Load("prefabs/zyds");
+            Debug.Log("改变prefabs ZYDS");
+            currentSelect = "zyds";
         }
 
-        public void SetGJY()
+        public void SetEiffel()
         {
-            arDiscoveryLogoPlanePrefabs = (GameObject)Resources.Load("prefabs/gjy");
+            Debug.Log("改变prefabs Eiffel");
+            currentSelect = "eiffel";
         }
     }
 }

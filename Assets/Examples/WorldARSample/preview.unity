@@ -631,7 +631,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1575068040}
-        m_MethodName: SetGJY
+        m_MethodName: SetEiffel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1322,13 +1322,15 @@ MonoBehaviour:
   planePrefabs: {fileID: 1071887080811128, guid: 57a5268809d262243a9a593659000523,
     type: 3}
   planeLabelPrefabs: {fileID: 0}
-  arDiscoveryLogoPlanePrefabs: {fileID: 1985491152450146, guid: 2d3823270cd982747932734f2f4c9df5,
+  arDiscoveryLogoPlanePrefabs: {fileID: 1985491152450146, guid: 41fa7d6c05eabe649a73542a7322d987,
     type: 3}
   arDiscoveryLogoPointPrefabs: {fileID: 1985491152450146, guid: ef62c7a73c29d5f4888541bf8c7ed5dd,
     type: 3}
   isOpen: 0
   scrollMenu: {fileID: 1669839694}
   openImage: {fileID: 1041261067}
+  zyds: {fileID: 0}
+  currentSelect: default
 --- !u!4 &1575068041
 Transform:
   m_ObjectHideFlags: 0

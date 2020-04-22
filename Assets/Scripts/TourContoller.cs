@@ -39,7 +39,7 @@ public class TourContoller : MonoBehaviour
 
     public void OnDuLouvreClick()
     {
-        defaultSelect = "duLouvre";
+        defaultSelect = "zyds";
         StartCoroutine(LoadScene());
     }
 

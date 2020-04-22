@@ -551,7 +551,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Eiffel Tower
+  m_Text: "\u57C3\u83F2\u5C14\u94C1\u5854"
 --- !u!222 &699617056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ae2eabe60ed0cf84c8d681f1740d9fa0, type: 3}
+  m_Texture: {fileID: 2800000, guid: 7665d6328d2b3f840aba0da183eae860, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 7665d6328d2b3f840aba0da183eae860, type: 3}
+  m_Texture: {fileID: 2800000, guid: 94d3df6437cfe3f4893d268489ec1100, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1517,7 +1517,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Mus\xE9eDuLouvre"
+  m_Text: "\u4E2D\u94F6\u5927\u53A6"
 --- !u!222 &1074822892
 CanvasRenderer:
   m_ObjectHideFlags: 0
